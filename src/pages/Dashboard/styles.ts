@@ -8,9 +8,10 @@ export const MainGrid = styled.main`
     margin: auto;
     max-width: 500px;
     
+    
     .menu {
         background: #EBE2F7;
-        display: none;
+        display: block;
         max-width: 950px;
         height: 100vh;
         margin: auto;
@@ -37,6 +38,7 @@ export const MainGrid = styled.main`
 export const Form = styled.form `
     margin: auto;
     margin-top: 40px;
+    margin-bottom: 10px;
     max-width: 94%;
     display: flex;
 
@@ -76,8 +78,11 @@ export const Title = styled.h2`
     font-size: 25px;
     color: #33054D;
     max-width: 450px;
-    line-height: 56px;
     margin: 0px 40px;
+    @media (max-width: 1258px){
+        text-align: center;
+        margin: auto;
+    }
 
 `;
 

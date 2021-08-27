@@ -19,20 +19,20 @@ export const FoodCard = styled.div`
   margin: 10px;
   box-shadow: 5px 5px 5px grey;
   text-align: center;
-  
-  .card-side-left{
+
+  .card-side-left {
     width: 200px;
     height: 100%;
     /* border: red solid 1px; */
     display: flex;
-    img{
+    img {
       margin: auto;
       padding: 5px;
       width: 85%;
       border-radius: 100px;
     }
   }
-  .card-side-right{
+  .card-side-right {
     width: 200px;
     height: 100%;
     margin: auto;
@@ -40,20 +40,20 @@ export const FoodCard = styled.div`
     flex-direction: column;
     /* border: red solid 1px; */
 
-    h2{
-      margin:20px;
+    h2 {
+      margin: 20px;
     }
-    div{
+    div {
       font-size: 1.7rem;
       margin: 10px;
       display: flex;
       justify-content: space-between;
     }
-    hr{
+    hr {
       width: 88%;
       margin: auto;
       color: grey;
       opacity: 0.5;
     }
-    }
+  }
 `;
