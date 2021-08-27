@@ -11,7 +11,9 @@ export const MainGrid = styled.main`
     .menu {
         background: #EBE2F7;
         display: none;
-        max-width: 100%;
+        max-width: 950px;
+        height: 100vh;
+        margin: auto;
         @media (min-width: 860px) {
         display: block;
          }
@@ -19,6 +21,7 @@ export const MainGrid = styled.main`
     .order {
      border-radius: 50px 0 0 50px;
      background: #fff;
+     text-align: center;
     }
     
 
@@ -29,21 +32,16 @@ export const MainGrid = styled.main`
     grid-template-columns: 2fr 1fr;
   }
 
-  /* hr{
-      max-width: 93%;
-      margin: auto;
-      
-  } */
-    
+
 `
 export const Form = styled.form `
+    margin: auto;
     margin-top: 40px;
-    max-width: 95%;
+    max-width: 94%;
     display: flex;
 
     input {
         flex: 1;
-        margin-left: 30px;
         height: 35px;
         padding: 0 24px;
         border: 2px solid #fff;
@@ -81,4 +79,13 @@ export const Title = styled.h2`
     line-height: 56px;
     margin: 0px 40px;
 
+`;
+
+export const TitleOrder = styled.h2`
+    font-size: 25px;
+    color: #000;
+    margin: auto;
+    max-width: 450px;
+    line-height: 56px;
+    margin-top: 40px;
 `
