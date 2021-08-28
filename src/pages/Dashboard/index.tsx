@@ -3,7 +3,48 @@ import { Form, MainGrid, Title, TitleOrder } from "./styles";
 import { MdSearch, MdAddCircle } from "react-icons/md";
 import { Container, FoodCard } from "../../components/FoodCard";
 
+import { useState, useEffect } from "react";
+
+interface FoodProps {
+  idFood: string;
+  price: string;
+  dish: string;
+  imgUrl: string;
+}
+
 export const Dashboard: React.FC = () => {
+  const [items, setItems] = useState<FoodProps[]>([]);
+
+  useEffect(function () {
+    // API graphQL
+    const token = "ce93f5baa37e0711878d2c44343178";
+    fetch("https://graphql.datocms.com/", {
+      method: "POST",
+      headers: {
+        Authorization: `${token}`,
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        query: `query {
+                allFoods {
+                idFood
+                price
+                dish
+                imgUrl
+            }
+        }`,
+      }),
+    })
+      .then(async (response) => await response.json()) //com retorno direto arrow function
+      .then((respostaCompleta) => {
+        // setItems(respostaCompleta.data.allFoods[0].price);
+        const allFoods = respostaCompleta.data.allFoods;
+        setItems(allFoods);
+        // console.log(items);
+      });
+  }, []);
+
   return (
     <>
       <MainGrid>
@@ -22,7 +63,23 @@ export const Dashboard: React.FC = () => {
 
           <Title>Pratos Populares</Title>
           <Container>
-            <FoodCard>
+            {items.map((item) => (
+              <FoodCard key={item.idFood}>
+                <div className="card-side-left">
+                  <img src={item.imgUrl} alt="dish" />
+                </div>
+                <div className="card-side-right">
+                  <h2>{item.dish}</h2>
+                  <hr />
+
+                  <div>
+                    <h3>{item.price}</h3>
+                    <MdAddCircle size={40} color="#5B3E96" />
+                  </div>
+                </div>
+              </FoodCard>
+            ))}
+            {/* <FoodCard>
               <div className="card-side-left">
                 <img src="https://i.ibb.co/hH0zWdp/food1.png" alt="dish" />
               </div>
@@ -31,14 +88,14 @@ export const Dashboard: React.FC = () => {
                 <hr />
 
                 <div>
-                  <h3>R$ 25,00</h3>
+                  <h3>{items[0].price}</h3>
                   <MdAddCircle size={40} color="#5B3E96" />
                 </div>
               </div>
-            </FoodCard>
+            </FoodCard> */}
+            {/* <FoodCard></FoodCard>
             <FoodCard></FoodCard>
-            <FoodCard></FoodCard>
-            <FoodCard></FoodCard>
+            <FoodCard></FoodCard> */}
           </Container>
         </div>
 
