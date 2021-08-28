@@ -1,3 +1,4 @@
+import { shade } from "polished";
 import styled from "styled-components";
 
 export const Container = styled.section`
@@ -7,6 +8,15 @@ export const Container = styled.section`
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
+
+  .buttonHover {
+    color: #5b3e96;
+    transition: color 0.2;
+
+    &:hover {
+      color: ${shade(0.3, "#5b3e96")};
+    }
+  }
 `;
 
 export const FoodCard = styled.div`

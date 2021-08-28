@@ -14,6 +14,7 @@ interface FoodProps {
 
 export const Dashboard: React.FC = () => {
   const [items, setItems] = useState<FoodProps[]>([]);
+  const [orders, setOrders] = useState<FoodProps[]>([]);
 
   useEffect(function () {
     // API graphQL
@@ -38,12 +39,15 @@ export const Dashboard: React.FC = () => {
     })
       .then(async (response) => await response.json()) //com retorno direto arrow function
       .then((respostaCompleta) => {
-        // setItems(respostaCompleta.data.allFoods[0].price);
         const allFoods = respostaCompleta.data.allFoods;
         setItems(allFoods);
-        // console.log(items);
       });
   }, []);
+
+  const handleOrder = (item: any) => {
+    setOrders([...orders, item]);
+    console.log(orders);
+  };
 
   return (
     <>
@@ -63,44 +67,48 @@ export const Dashboard: React.FC = () => {
 
           <Title>Pratos Populares</Title>
           <Container>
-            {items.map((item) => (
-              <FoodCard key={item.idFood}>
-                <div className="card-side-left">
-                  <img src={item.imgUrl} alt="dish" />
-                </div>
-                <div className="card-side-right">
-                  <h2>{item.dish}</h2>
-                  <hr />
-
-                  <div>
-                    <h3>{item.price}</h3>
-                    <MdAddCircle size={40} color="#5B3E96" />
+            {items &&
+              items.map((item) => (
+                <FoodCard key={item.idFood}>
+                  <div className="card-side-left">
+                    <img src={item.imgUrl} alt="dish" />
                   </div>
-                </div>
-              </FoodCard>
-            ))}
-            {/* <FoodCard>
-              <div className="card-side-left">
-                <img src="https://i.ibb.co/hH0zWdp/food1.png" alt="dish" />
-              </div>
-              <div className="card-side-right">
-                <h2>Bife com Ovo</h2>
-                <hr />
+                  <div className="card-side-right">
+                    <h2>{item.dish}</h2>
+                    <hr />
 
-                <div>
-                  <h3>{items[0].price}</h3>
-                  <MdAddCircle size={40} color="#5B3E96" />
-                </div>
-              </div>
-            </FoodCard> */}
-            {/* <FoodCard></FoodCard>
-            <FoodCard></FoodCard>
-            <FoodCard></FoodCard> */}
+                    <div>
+                      <h3>{item.price}</h3>
+                      <MdAddCircle
+                        size={40}
+                        className="buttonHover"
+                        onClick={() => handleOrder(item)}
+                      />
+                    </div>
+                  </div>
+                </FoodCard>
+              ))}
           </Container>
         </div>
 
         <div className="order" style={{ gridArea: "order" }}>
           <TitleOrder>Pedido</TitleOrder>
+          {orders &&
+            orders.map((order) => (
+              <FoodCard key={order.idFood}>
+                <div className="card-side-left">
+                  <img src={order.imgUrl} alt="dish" />
+                </div>
+                <div className="card-side-right">
+                  <h2>{order.dish}</h2>
+                  <hr />
+
+                  <div>
+                    <h3>{order.price}</h3>
+                  </div>
+                </div>
+              </FoodCard>
+            ))}
         </div>
       </MainGrid>
     </>
