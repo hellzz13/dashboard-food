@@ -33,8 +33,8 @@ export const FoodCard = styled.div`
   .card-side-left {
     width: 200px;
     height: 100%;
-    /* border: red solid 1px; */
     display: flex;
+
     img {
       margin: auto;
       padding: 5px;
@@ -48,7 +48,6 @@ export const FoodCard = styled.div`
     margin: auto;
     display: flex;
     flex-direction: column;
-    /* border: red solid 1px; */
 
     h2 {
       margin: 20px;
@@ -65,5 +64,27 @@ export const FoodCard = styled.div`
       color: grey;
       opacity: 0.5;
     }
+  }
+`;
+
+export const FoodCardOrder = styled.div`
+  max-width: 380px;
+  margin: auto;
+  margin-bottom: 10px;
+  height: 80px;
+  background: #fff;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  border: solid #d1bdee 1px;
+  justify-content: space-around;
+
+  img {
+    width: 80px;
+    border-radius: 100px;
+  }
+  h2 {
+    font-size: 1.1rem;
   }
 `;

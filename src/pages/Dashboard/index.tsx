@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, MainGrid, Title, TitleOrder } from "./styles";
-import { MdSearch, MdAddCircle } from "react-icons/md";
-import { Container, FoodCard } from "../../components/FoodCard";
+import { MdSearch, MdAddCircle, MdClose } from "react-icons/md";
+import { Container, FoodCard, FoodCardOrder } from "../../components/FoodCard";
 
 import { useState, useEffect } from "react";
 
@@ -46,7 +46,12 @@ export const Dashboard: React.FC = () => {
 
   const handleOrder = (item: any) => {
     setOrders([...orders, item]);
-    console.log(orders);
+  };
+
+  const handlerDeleteOrder = (order: any) => {
+    // console.log(order);
+    const dishes = orders.filter((item) => item !== order);
+    setOrders(dishes);
   };
 
   return (
@@ -94,21 +99,19 @@ export const Dashboard: React.FC = () => {
         <div className="order" style={{ gridArea: "order" }}>
           <TitleOrder>Pedido</TitleOrder>
           {orders &&
-            orders.map((order) => (
-              <FoodCard key={order.idFood}>
-                <div className="card-side-left">
-                  <img src={order.imgUrl} alt="dish" />
-                </div>
-                <div className="card-side-right">
-                  <h2>{order.dish}</h2>
-                  <hr />
+            orders.map((order, index) => (
+              <FoodCardOrder key={index}>
+                <img src={order.imgUrl} alt="" />
+                <h2>{order.dish}</h2>
+                <hr />
 
-                  <div>
-                    <h3>{order.price}</h3>
-                  </div>
+                <div>
+                  <h3>{order.price}</h3>
                 </div>
-              </FoodCard>
+                <MdClose size={25} onClick={() => handlerDeleteOrder(order)} />
+              </FoodCardOrder>
             ))}
+          <hr />
         </div>
       </MainGrid>
     </>

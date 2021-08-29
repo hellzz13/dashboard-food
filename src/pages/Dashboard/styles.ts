@@ -4,7 +4,6 @@ import styled from "styled-components";
 export const MainGrid = styled.main`
     height: 100vh;
     width: 100%;
-    /* grid-gap: 10px; */
     margin: auto;
     max-width: 500px;
     
