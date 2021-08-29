@@ -4,6 +4,7 @@ import { MdSearch, MdAddCircle, MdClose } from "react-icons/md";
 import { Container, FoodCard, FoodCardOrder } from "../../components/FoodCard";
 
 import { useState, useEffect } from "react";
+import { Button } from "../../components/Buttons";
 
 interface FoodProps {
   idFood: string;
@@ -83,7 +84,7 @@ export const Dashboard: React.FC = () => {
                     <hr />
 
                     <div>
-                      <h3>{item.price}</h3>
+                      <h3>R$ {item.price}</h3>
                       <MdAddCircle
                         size={40}
                         className="buttonHover"
@@ -103,15 +104,25 @@ export const Dashboard: React.FC = () => {
               <FoodCardOrder key={index}>
                 <img src={order.imgUrl} alt="" />
                 <h2>{order.dish}</h2>
-                <hr />
-
                 <div>
-                  <h3>{order.price}</h3>
+                  <h3>R$ {order.price}</h3>
                 </div>
                 <MdClose size={25} onClick={() => handlerDeleteOrder(order)} />
               </FoodCardOrder>
             ))}
           <hr />
+          <div className="totalPrice">
+            <h2>TOTAL</h2>
+            {orders &&
+              orders
+                .map((x) => parseFloat(x.price))
+                .reduce((amount, item) => amount + item, 0)}
+            {/* {orders.map((order) => (
+              <p>{order.price}</p>
+            ))} */}
+          </div>
+          <Button> Confirmar </Button>
+          <Button> Cancelar </Button>
         </div>
       </MainGrid>
     </>

@@ -22,6 +22,15 @@ export const MainGrid = styled.main`
      border-radius: 50px 0 0 50px;
      background: #fff;
      text-align: center;
+     .totalPrice{
+         height: 50px;
+         display: flex;
+         justify-content: space-around;
+         align-items: center;
+         h2, p{
+             font-size: 1.5rem;
+         }
+     }
     }
     
 
@@ -32,8 +41,15 @@ export const MainGrid = styled.main`
     grid-template-columns: 2fr 1fr;
   }
 
+  hr{
+      width: 90%;
+      margin: auto;
+      margin-top: 20px;
+      color: grey;
+      opacity: 0.5;
+  }
 
-`
+`;
 export const Form = styled.form `
     margin: auto;
     margin-top: 40px;
