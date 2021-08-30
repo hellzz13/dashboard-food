@@ -7,10 +7,10 @@ export const Kitchen: React.FC = () => {
   return (
     <>
       <Link to={'/'} >
-        <Button> Voltar </Button>
+        <Button as='button'> Voltar </Button>
       </Link>
       <KitchenArea>
-        
+
       </KitchenArea>
     </>
     );

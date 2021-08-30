@@ -3,11 +3,12 @@ import { Form, MainGrid, Title, TitleOrder, OrderArea } from "./styles";
 import { MdSearch, MdAddCircle, MdClose } from "react-icons/md";
 import { Container, FoodCard, FoodCardOrder } from "../../components/FoodCard";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext  } from "react";
 import { Button } from "../../components/Buttons";
 import { Link } from "react-router-dom";
+import { OrderContext } from "../../context/orders";
 
-interface FoodProps {
+export interface FoodProps {
   idFood: string;
   price: string;
   dish: string;
@@ -16,6 +17,7 @@ interface FoodProps {
 
 export const Dashboard: React.FC = () => {
   const [items, setItems] = useState<FoodProps[]>([]);
+  // const {orders, setOrders} = useContext(OrderContext);
   const [orders, setOrders] = useState<FoodProps[]>([]);
 
   useEffect(function () {
@@ -57,6 +59,7 @@ export const Dashboard: React.FC = () => {
 
   return (
     <>
+    {console.log(orders)}
       <MainGrid>
         <div className="menu" style={{ gridArea: "menu" }}>
           <Form>
@@ -123,9 +126,9 @@ export const Dashboard: React.FC = () => {
             </div>
           </div>
           <Link to={'cozinha'} >
-          <Button> Confirmar</Button>
+          <Button as='button'> Confirmar</Button>
           </Link>
-          <Button> Cancelar </Button>
+          <Button as='button'> Cancelar </Button>
         </div>
       </MainGrid>
     </>
