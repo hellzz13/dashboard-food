@@ -108,4 +108,17 @@ export const TitleOrder = styled.h2`
     max-width: 450px;
     line-height: 56px;
     margin-top: 40px;
-`
+`;
+
+export const OrderArea = styled.section`
+    height: 500px;
+    width: auto;
+    margin: 10px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    ::-webkit-scrollbar {
+    background: transparent; 
+}
+
+`;

@@ -1,5 +1,17 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { Button } from "../../components/Buttons";
+import { KitchenArea } from "./styles";
 
 export const Kitchen: React.FC = () => {
-  return <h1>Kitchen</h1>;
+  return (
+    <>
+      <Link to={'/'} >
+        <Button> Voltar </Button>
+      </Link>
+      <KitchenArea>
+        
+      </KitchenArea>
+    </>
+    );
 };

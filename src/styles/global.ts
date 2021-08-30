@@ -24,9 +24,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     #root {
-        /* max-width: 960px; */
         margin: 0 auto;
-        /* padding: 2.5rem 1.25rem; */
     }
 
     button{

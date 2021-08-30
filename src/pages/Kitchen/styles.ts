@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
-const Maingrid = styled.div`
+export const KitchenArea = styled.div`
+
+
     
 `

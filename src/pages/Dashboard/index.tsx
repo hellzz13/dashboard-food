@@ -1,10 +1,11 @@
 import React from "react";
-import { Form, MainGrid, Title, TitleOrder } from "./styles";
+import { Form, MainGrid, Title, TitleOrder, OrderArea } from "./styles";
 import { MdSearch, MdAddCircle, MdClose } from "react-icons/md";
 import { Container, FoodCard, FoodCardOrder } from "../../components/FoodCard";
 
 import { useState, useEffect } from "react";
 import { Button } from "../../components/Buttons";
+import { Link } from "react-router-dom";
 
 interface FoodProps {
   idFood: string;
@@ -38,19 +39,18 @@ export const Dashboard: React.FC = () => {
         }`,
       }),
     })
-      .then(async (response) => await response.json()) //com retorno direto arrow function
+      .then(async (response) => await response.json()) 
       .then((respostaCompleta) => {
         const allFoods = respostaCompleta.data.allFoods;
         setItems(allFoods);
       });
   }, []);
 
-  const handleOrder = (item: any) => {
+  const handleOrder = (item: FoodProps) => {
     setOrders([...orders, item]);
   };
 
-  const handlerDeleteOrder = (order: any) => {
-    // console.log(order);
+  const handlerDeleteOrder = (order: FoodProps) => {
     const dishes = orders.filter((item) => item !== order);
     setOrders(dishes);
   };
@@ -99,6 +99,7 @@ export const Dashboard: React.FC = () => {
 
         <div className="order" style={{ gridArea: "order" }}>
           <TitleOrder>Pedido</TitleOrder>
+          <OrderArea>
           {orders &&
             orders.map((order, index) => (
               <FoodCardOrder key={index}>
@@ -110,18 +111,20 @@ export const Dashboard: React.FC = () => {
                 <MdClose size={25} onClick={() => handlerDeleteOrder(order)} />
               </FoodCardOrder>
             ))}
+          </OrderArea>
           <hr />
           <div className="totalPrice">
             <h2>TOTAL</h2>
+            <div>R$
             {orders &&
               orders
                 .map((x) => parseFloat(x.price))
                 .reduce((amount, item) => amount + item, 0)}
-            {/* {orders.map((order) => (
-              <p>{order.price}</p>
-            ))} */}
+            </div>
           </div>
-          <Button> Confirmar </Button>
+          <Link to={'cozinha'} >
+          <Button> Confirmar</Button>
+          </Link>
           <Button> Cancelar </Button>
         </div>
       </MainGrid>
