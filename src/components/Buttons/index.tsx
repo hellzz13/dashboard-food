@@ -5,6 +5,7 @@ export const Button = styled.a`
   border-radius: 3px;
   padding: 0.5rem 0;
   margin: 0.5rem 1rem;
+  height: 3rem;
   width: 11rem;
   background: #8048cf;
   color: white;

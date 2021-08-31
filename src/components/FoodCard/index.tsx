@@ -68,10 +68,10 @@ export const FoodCard = styled.div`
 `;
 
 export const FoodCardOrder = styled.div`
-  max-width: 380px;
-  margin: auto;
+  width: 380px;
+  height: 200px;
   margin-bottom: 10px;
-  height: 80px;
+  max-height: 80px;
   background: #fff;
   border-radius: 20px;
   display: flex;
