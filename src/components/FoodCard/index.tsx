@@ -11,7 +11,8 @@ export const Container = styled.section`
 
   .buttonHover {
     color: #5b3e96;
-    transition: color 0.2;
+    transition: color 0.3;
+    cursor: pointer;
 
     &:hover {
       color: ${shade(0.3, "#5b3e96")};

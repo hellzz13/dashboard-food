@@ -1,3 +1,4 @@
+import { shade } from "polished";
 import styled, { css } from "styled-components";
 
 export const Button = styled.a`
@@ -7,12 +8,19 @@ export const Button = styled.a`
   margin: 0.5rem 1rem;
   height: 3rem;
   width: 11rem;
-  background: #8048cf;
+  /* background: #8048cf; */
   color: white;
   border: 2px solid white;
   border-radius: 50px;
 
-  /* The GitHub button is a primary button
+    background: #8048cf;
+    transition: color 0.2;
+
+    &:hover {
+      background: ${shade(0.3, "#8048cf")};
+    }
+
+  /* The GitHub button is a secundary button
    * edit this to target it specifically! */
   ${(props) =>
     // props.secondary &&
