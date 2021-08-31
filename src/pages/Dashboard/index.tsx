@@ -92,12 +92,12 @@ export const Dashboard: React.FC = () => {
           </Container>
         </div>
 
-        <div className="order" style={{ gridArea: "order" }}>
+        <div className="order" style={{ gridArea: "order" }} >
           <TitleOrder>Pedido</TitleOrder>
           <OrderArea>
             {orders &&
               orders.map((order, index) => (
-                <FoodCardOrder key={index}>
+                <FoodCardOrder key={index} style={{margin: '10px auto'}}>
                   <img src={order.imgUrl} alt="" />
                   <h2>{order.dish}</h2>
                   <div>
@@ -122,9 +122,9 @@ export const Dashboard: React.FC = () => {
             </div>
           </div>
           <Link to={"cozinha"}>
-            <Button as="button"> Confirmar</Button>
+            <Button as="button">CONFIRMAR</Button>
           </Link>
-          <Button as="button"> Cancelar </Button>
+          <Button as="button"> CANCELAR </Button>
         </div>
       </MainGrid>
     </>
