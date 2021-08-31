@@ -1,21 +1,9 @@
-import React, { createContext , useState } from "react";
+import React from "react";
 
-import { FoodProps } from "../pages/Dashboard";
+import { UserContextProvider } from "./user";
 
+const Globalcontext: React.FC = ({ children }) => {
+  return <UserContextProvider>{children}</UserContextProvider>;
+};
 
-export const OrderContext = createContext({});
-
-
-export const OrderProvider: React.FC = ({children}) => {
-
-    const [orders, setOrders] = useState<FoodProps[]>([]);
-    
-
-
-    return (
-        <OrderContext.Provider value={{orders, setOrders}}>
-            {children}
-        </OrderContext.Provider>
-    );
-}
- 
+export default Globalcontext;

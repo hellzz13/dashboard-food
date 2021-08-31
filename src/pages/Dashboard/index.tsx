@@ -1,24 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Form, MainGrid, Title, TitleOrder, OrderArea } from "./styles";
 import { MdSearch, MdAddCircle, MdClose } from "react-icons/md";
 import { Container, FoodCard, FoodCardOrder } from "../../components/FoodCard";
 
-import { useState, useEffect, useContext  } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "../../components/Buttons";
 import { Link } from "react-router-dom";
-import { OrderContext } from "../../context/orders";
-
-export interface FoodProps {
-  idFood: string;
-  price: string;
-  dish: string;
-  imgUrl: string;
-}
+import UserContext, { FoodProps } from "../../context/user";
 
 export const Dashboard: React.FC = () => {
   const [items, setItems] = useState<FoodProps[]>([]);
-  // const {orders, setOrders} = useContext(OrderContext);
-  const [orders, setOrders] = useState<FoodProps[]>([]);
+  const { orders, setOrders } = useContext(UserContext);
 
   useEffect(function () {
     // API graphQL
@@ -41,7 +33,7 @@ export const Dashboard: React.FC = () => {
         }`,
       }),
     })
-      .then(async (response) => await response.json()) 
+      .then(async (response) => await response.json())
       .then((respostaCompleta) => {
         const allFoods = respostaCompleta.data.allFoods;
         setItems(allFoods);
@@ -59,7 +51,7 @@ export const Dashboard: React.FC = () => {
 
   return (
     <>
-    {console.log(orders)}
+      {console.log(orders)}
       <MainGrid>
         <div className="menu" style={{ gridArea: "menu" }}>
           <Form>
@@ -103,32 +95,36 @@ export const Dashboard: React.FC = () => {
         <div className="order" style={{ gridArea: "order" }}>
           <TitleOrder>Pedido</TitleOrder>
           <OrderArea>
-          {orders &&
-            orders.map((order, index) => (
-              <FoodCardOrder key={index}>
-                <img src={order.imgUrl} alt="" />
-                <h2>{order.dish}</h2>
-                <div>
-                  <h3>R$ {order.price}</h3>
-                </div>
-                <MdClose size={25} onClick={() => handlerDeleteOrder(order)} />
-              </FoodCardOrder>
-            ))}
+            {orders &&
+              orders.map((order, index) => (
+                <FoodCardOrder key={index}>
+                  <img src={order.imgUrl} alt="" />
+                  <h2>{order.dish}</h2>
+                  <div>
+                    <h3>R$ {order.price}</h3>
+                  </div>
+                  <MdClose
+                    size={25}
+                    onClick={() => handlerDeleteOrder(order)}
+                  />
+                </FoodCardOrder>
+              ))}
           </OrderArea>
           <hr />
           <div className="totalPrice">
             <h2>TOTAL</h2>
-            <div>R$
-            {orders &&
-              orders
-                .map((x) => parseFloat(x.price))
-                .reduce((amount, item) => amount + item, 0)}
+            <div>
+              R$
+              {orders &&
+                orders
+                  .map((x) => parseFloat(x.price))
+                  .reduce((amount, item) => amount + item, 0)}
             </div>
           </div>
-          <Link to={'cozinha'} >
-          <Button as='button'> Confirmar</Button>
+          <Link to={"cozinha"}>
+            <Button as="button"> Confirmar</Button>
           </Link>
-          <Button as='button'> Cancelar </Button>
+          <Button as="button"> Cancelar </Button>
         </div>
       </MainGrid>
     </>
