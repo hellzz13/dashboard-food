@@ -1,9 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Form, MainGrid, Title, TitleOrder, OrderArea } from "./styles";
 import { MdSearch, MdAddCircle, MdClose } from "react-icons/md";
 import { Container, FoodCard, FoodCardOrder } from "../../components/FoodCard";
 
-import { useState, useEffect } from "react";
 import { Button } from "../../components/Buttons";
 import { Link } from "react-router-dom";
 import UserContext, { FoodProps } from "../../context/user";
@@ -11,6 +10,7 @@ import UserContext, { FoodProps } from "../../context/user";
 export const Dashboard: React.FC = () => {
   const [items, setItems] = useState<FoodProps[]>([]);
   const { orders, setOrders } = useContext(UserContext);
+  const { handlerDeleteOrder } = useContext(UserContext);
 
   useEffect(function () {
     // API graphQL
@@ -29,6 +29,7 @@ export const Dashboard: React.FC = () => {
                 price
                 dish
                 imgUrl
+                id
             }
         }`,
       }),
@@ -39,19 +40,30 @@ export const Dashboard: React.FC = () => {
         setItems(allFoods);
       });
   }, []);
+  // function idGenerator() {
+  //   const timestamp = new Date();
 
-  const handleOrder = (item: FoodProps) => {
-    setOrders([...orders, item]);
+  //   const id =
+  //     timestamp.getHours().toString() +
+  //     timestamp.getMinutes().toString() +
+  //     timestamp.getSeconds().toString() +
+  //     timestamp.getMilliseconds().toString();
+
+  //   return id;
+  // }
+
+  const handleOrder = (order: FoodProps) => {
+    // order.id = idGenerator();
+    setOrders([...orders, order]);
+    console.log(orders);
   };
 
-  const handlerDeleteOrder = (order: FoodProps) => {
-    const dishes = orders.filter((item) => item !== order);
-    setOrders(dishes);
-  };
+  function handleInputChange(event: React.ChangeEvent<HTMLInputElement>): void {
+    setOrders(event.target.value);
+  }
 
   return (
     <>
-      {console.log(orders)}
       <MainGrid>
         <div className="menu" style={{ gridArea: "menu" }}>
           <Form>
@@ -60,17 +72,17 @@ export const Dashboard: React.FC = () => {
               <MdSearch size={25} />
             </button>
           </Form>
-          <Title>Ofertas</Title>
+          {/* <Title>Ofertas</Title>
           <Container>
             <FoodCard></FoodCard>
             <FoodCard></FoodCard>
-          </Container>
+          </Container> */}
 
           <Title>Pratos Populares</Title>
           <Container>
             {items &&
-              items.map((item) => (
-                <FoodCard key={item.idFood}>
+              items.map((item, index) => (
+                <FoodCard key={item.idFood + index}>
                   <div className="card-side-left">
                     <img src={item.imgUrl} alt="dish" />
                   </div>
@@ -92,12 +104,12 @@ export const Dashboard: React.FC = () => {
           </Container>
         </div>
 
-        <div className="order" style={{ gridArea: "order" }} >
+        <div className="order" style={{ gridArea: "order" }}>
           <TitleOrder>Pedido</TitleOrder>
           <OrderArea>
             {orders &&
               orders.map((order, index) => (
-                <FoodCardOrder key={index} style={{margin: '10px auto'}}>
+                <FoodCardOrder key={index} style={{ margin: "10px auto" }}>
                   <img src={order.imgUrl} alt="" />
                   <h2>{order.dish}</h2>
                   <div>

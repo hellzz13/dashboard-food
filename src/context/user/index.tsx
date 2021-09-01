@@ -5,12 +5,16 @@ export interface FoodProps {
   price: string;
   dish: string;
   imgUrl: string;
+  id: string;
 }
 
 // tipando props do contexto
 type PropsUserContext = {
   orders: FoodProps[];
   setOrders: any;
+  waiter: FoodProps[];
+  setWaiter: any;
+  handlerDeleteOrder: any;
 };
 
 // valor default do contexto
@@ -18,6 +22,9 @@ type PropsUserContext = {
 const DEFAULT_VALUE = {
   orders: [],
   setOrders: () => {},
+  waiter: [],
+  setWaiter: () => {},
+  handlerDeleteOrder: () => {},
 };
 
 // criando nosso contexto UserContext
@@ -30,9 +37,23 @@ const UserContext = createContext<PropsUserContext>(DEFAULT_VALUE);
 
 const UserContextProvider: React.FC = ({ children }) => {
   const [orders, setOrders] = useState(DEFAULT_VALUE.orders);
+  const [waiter, setWaiter] = useState(DEFAULT_VALUE.waiter);
+
+  const handlerDeleteOrder = (order: FoodProps) => {
+    const dishes = orders.filter((item) => item !== order);
+    setOrders(dishes);
+  };
 
   return (
-    <UserContext.Provider value={{ orders, setOrders }}>
+    <UserContext.Provider
+      value={{
+        orders,
+        setOrders,
+        waiter,
+        setWaiter,
+        handlerDeleteOrder,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );

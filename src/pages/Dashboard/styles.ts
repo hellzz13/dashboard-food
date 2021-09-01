@@ -12,10 +12,11 @@ export const MainGrid = styled.main`
         background: #EBE2F7;
         display: block;
         max-width: 950px;
-        height: 100vh;
+        
         margin: auto;
         @media (min-width: 860px) {
         display: block;
+        height: 100vh;
          }
     }
     .order {
@@ -94,6 +95,7 @@ export const Title = styled.h2`
     color: #33054D;
     max-width: 450px;
     margin: 0px 40px;
+    margin-top: 30px;
     @media (max-width: 1258px){
         text-align: center;
         margin: auto;
