@@ -13,19 +13,10 @@ export const Button = styled.a`
   border: 2px solid white;
   border-radius: 50px;
 
-    background: #8048cf;
-    transition: color 0.2;
+  background: #8048cf;
+  transition: color 0.2;
 
-    &:hover {
-      background: ${shade(0.3, "#8048cf")};
-    }
-
-  /* The GitHub button is a secundary button
-   * edit this to target it specifically! */
-  ${(props) =>
-    // props.secondary &&
-    css`
-      /* background: transparent;
-      color: #8048cf; */
-    `}
+  &:hover {
+    background: ${shade(0.3, "#8048cf")};
+  }
 `;

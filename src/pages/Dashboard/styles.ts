@@ -32,6 +32,15 @@ export const MainGrid = styled.main`
              font-size: 1.5rem;
          }
      }
+     .closeButton{
+         color: #D1BDEE;
+        transition: color 0.2;
+
+        &:hover {
+            color: ${shade(0.3, '#5b3e96')};
+        }
+
+     }
     }
     
 

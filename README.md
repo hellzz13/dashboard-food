@@ -1,43 +1,53 @@
-# Getting Started with Create React App
+# Dashboard Restaurante
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Sobre a aplicação**
 
-## Available Scripts
+O projeto consiste em ambiente com fluxo de pedido de um restaurante. Na área principal pode-se encontrar os pratos mais populares, nos quais podemos selecionar e adicionar ao pedido que vai somando o valor de forma acumulativa a medida que os pratos vão sendo inseridos e podemos ver antes de confirmar.
 
-In the project directory, you can run:
+Após a confirmação do pedido a aplicação envia as refeições selecionadas para a área da cozinha, onde será a parte do preparo. Quando cada alimento for finalizado a cozinha vai dando baixa e imediatamente será enviado para a área de retirada, que nada mais é que o final do processo, onde quando o entregador ou garçom retirarem o prato também poderá ser dado baixa.
 
-### `npm start`
+**Rascunho layout/wireframe do Layout da aplicação feita no figma:**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[https://www.figma.com/file/zRDDgVCloZGHdDrs2y2Lzk/Food-Dashboard?node-id=0%3A1](https://www.figma.com/file/zRDDgVCloZGHdDrs2y2Lzk/Food-Dashboard?node-id=0%3A1)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+**Ferramentas utilizadas:**
 
-### `npm test`
+- A aplicação foi desenvolvida utilizando reactjs e typescript.
+- Estilizada com styled-components.
+- Utilizando também as bibliotecas: react-icons e polished.
+- Foi criado uma API simples para consumo das informações utilizando Dato-cms.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Observações / Melhorias a serem feitas**
 
-### `npm run build`
+A aplicação ainda necessita de algumas melhorias que foram detectadas e podem ser implementadas para o resultado final, pois houve um pouco de atraso no desenvolvimento, são elas:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Adicionar um ID dinâmico em cada item, fazendo com que sejam únicos mesmo que sejam adicionados mais de uma vez ao pedido. Algo pensado foi a biblioteca uuid, pois ser bem estável.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Adicionar os itens via input para facilitar a experiencia do usuário, adicionando também um auto-complete que auxilia na escolha do prato.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Validações: Botões para apenas habilitar quando o usuário tiver pedido, confirmação na hora de excluir um item ou cancelar um pedido.
 
-### `npm run eject`
+## Como executar
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Abra o terminal e copie o repositório
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+git clone https://github.com/hellzz13/dashboard-food.git
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Após copiar, e acessar o diretório da aplicação podemos, será necessário rodar o comando abaixo para instalar as dependências do projeto
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```bash
+npm install
+```
+
+Agora para que possa rodar o projeto será necessário rodar o comando
+
+```bash
+npm start
+```
+
+E será criado um [localhost](http://localhost) na porta 3000, que podemos acessar no link : [http://localhost:3000/](http://localhost:3000/)
 
 ## Learn More
 

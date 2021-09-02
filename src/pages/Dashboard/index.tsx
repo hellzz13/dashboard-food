@@ -29,7 +29,6 @@ export const Dashboard: React.FC = () => {
                 price
                 dish
                 imgUrl
-                id
             }
         }`,
       }),
@@ -40,20 +39,8 @@ export const Dashboard: React.FC = () => {
         setItems(allFoods);
       });
   }, []);
-  // function idGenerator() {
-  //   const timestamp = new Date();
-
-  //   const id =
-  //     timestamp.getHours().toString() +
-  //     timestamp.getMinutes().toString() +
-  //     timestamp.getSeconds().toString() +
-  //     timestamp.getMilliseconds().toString();
-
-  //   return id;
-  // }
 
   const handleOrder = (order: FoodProps) => {
-    // order.id = idGenerator();
     setOrders([...orders, order]);
     console.log(orders);
   };
@@ -72,11 +59,6 @@ export const Dashboard: React.FC = () => {
               <MdSearch size={25} />
             </button>
           </Form>
-          {/* <Title>Ofertas</Title>
-          <Container>
-            <FoodCard></FoodCard>
-            <FoodCard></FoodCard>
-          </Container> */}
 
           <Title>Pratos Populares</Title>
           <Container>
@@ -117,6 +99,7 @@ export const Dashboard: React.FC = () => {
                   </div>
                   <MdClose
                     size={25}
+                    className="closeButton"
                     onClick={() => handlerDeleteOrder(order)}
                   />
                 </FoodCardOrder>
@@ -136,7 +119,9 @@ export const Dashboard: React.FC = () => {
           <Link to={"cozinha"}>
             <Button as="button">CONFIRMAR</Button>
           </Link>
-          <Button as="button"> CANCELAR </Button>
+          <Button as="button" onClick={() => setOrders("")}>
+            CANCELAR
+          </Button>
         </div>
       </MainGrid>
     </>

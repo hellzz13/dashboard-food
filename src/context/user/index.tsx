@@ -1,6 +1,7 @@
 import React, { createContext, useState } from "react";
 
 export interface FoodProps {
+  dinamicId: any;
   idFood: string;
   price: string;
   dish: string;
@@ -43,7 +44,6 @@ const UserContextProvider: React.FC = ({ children }) => {
     const dishes = orders.filter((item) => item !== order);
     setOrders(dishes);
   };
-
   return (
     <UserContext.Provider
       value={{

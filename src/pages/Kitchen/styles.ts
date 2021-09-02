@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const KitchenArea = styled.div`
   background-color: #fff;
-  /* border: red solid 1px; */
   height: 50vh;
   max-width: 100%;
   margin: auto;

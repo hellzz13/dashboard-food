@@ -86,6 +86,7 @@ export const FoodCardOrder = styled.div`
     border-radius: 100px;
   }
   h2 {
-    font-size: 1.1rem;
+    max-width: 150px;
+    font-size: 1rem;
   }
 `;

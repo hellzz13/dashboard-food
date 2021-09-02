@@ -18,7 +18,7 @@ export const Kitchen: React.FC = () => {
   };
 
   const handlerFinishOrder = (order: FoodProps) => {
-    const dishes = orders.filter((item) => item !== order);
+    const dishes = waiter.filter((item) => item !== order);
     setWaiter(dishes);
   };
 
