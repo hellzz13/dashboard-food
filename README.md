@@ -16,6 +16,7 @@ Após a confirmação do pedido a aplicação envia as refeições selecionadas 
 - Estilizada com styled-components.
 - Utilizando também as bibliotecas: react-icons e polished.
 - Foi criado uma API simples para consumo das informações utilizando Dato-cms.
+- Foram usados os Hooks do react para controle de estado, inicialização e controle de consumo da API e contexto da aplicação.
 
 **Observações / Melhorias a serem feitas**
 
