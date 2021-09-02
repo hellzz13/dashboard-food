@@ -28,6 +28,8 @@ Adicionar os itens via input para facilitar a experiencia do usuário, adicionan
 
 Validações: Botões para apenas habilitar quando o usuário tiver pedido, confirmação na hora de excluir um item ou cancelar um pedido.
 
+Acrescentar um modal na hora de confirmar para receber o nome da pessoa que fez o pedido e vincular ao prato escolhido.
+
 ## Como executar
 
 Abra o terminal e copie o repositório
